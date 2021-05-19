@@ -1,0 +1,9 @@
+{
+  "flwList": [
+    {"node":"article.GetCommentsCount"},
+    {"node":"article.GetCommentsData"}
+  ],
+
+  "description": "A Vue.js project"
+
+}

@@ -1,0 +1,8 @@
+{
+  "flwList": [
+    {"node":"article.SetComments"}
+  ],
+
+  "description": "A Vue.js project"
+
+}

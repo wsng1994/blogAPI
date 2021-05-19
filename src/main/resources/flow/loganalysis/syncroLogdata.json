@@ -1,0 +1,8 @@
+{
+  "flwList": [
+    {"node":"loganalysis.SynLogData"}
+  ],
+
+  "description": "A Vue.js project"
+
+}

@@ -1,0 +1,8 @@
+{
+  "flwList": [
+    {"node":"clickhouse.InsetBigData"}
+  ],
+
+  "description": "A Vue.js project"
+
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wsng.blog.core.plugin.IRouterDaoCK">
+
+    <select id="getClickHouseCounts" parameterType="Map" resultType="java.lang.Integer">
+        select count(1)
+         from visits_v1
+    </select>
+
+    <select id="getClickHouseDatas" parameterType="Map" resultType="java.util.HashMap">
+        select CounterID as id,StartDate as dateTime,
+
+        Sign,IsNew,VisitID,UserID,StartTime,Duration
+
+        from visits_v1
+        <if test="pageNum != null and pageSize != null">
+            limit #{pageNum}, #{pageSize}
+        </if>
+    </select>
+
+    <insert id="saveLogData">
+    insert into testlog (pid,type,disallowComment) values
+    <foreach collection="list" item="item" index="index" separator=",">
+        (
+        #{item.pid},#{item.type},#{item.disallowComment}
+        )
+    </foreach>
+</insert>
+
+    <insert id="saveBigData">
+        insert into ckdatatest (mid,parentId,zid,qid,jid,transTime,transName,transSeq,transDate) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.mid},#{item.parentId},#{item.zid},#{item.qid},#{item.jid},#{item.transTime},#{item.transName},#{item.transSeq},#{item.transDate}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="synLogData">
+        insert into cklogdata (strMilsTime,startTime,nodeName,endMilsTime,endTime,clazz,transSeq,method) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.strMilsTime},#{item.startTime},#{item.nodeName},#{item.endMilsTime},#{item.endTime},#{item.clazz},#{item.transSeq},#{item.method}
+            )
+        </foreach>
+    </insert>
+
+</mapper>

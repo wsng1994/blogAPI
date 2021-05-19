@@ -1,0 +1,9 @@
+{
+  "flwList": [
+    {"node":"logbook.QueryTotalLogs"},
+    {"node":"logbook.QueryLogbooks"}
+  ],
+
+  "description": "A Vue.js project"
+
+}

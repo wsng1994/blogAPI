@@ -1,0 +1,9 @@
+{
+  "flwList": [
+    {"node":"Login"},
+    {"node":"QueryAll"}
+  ],
+
+  "description": "A Vue.js project"
+
+}

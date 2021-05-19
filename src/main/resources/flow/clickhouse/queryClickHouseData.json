@@ -1,0 +1,8 @@
+{
+  "flwList": [
+    {"node":"clickhouse.QueryClickData"}
+  ],
+
+  "description": "A Vue.js project"
+
+}

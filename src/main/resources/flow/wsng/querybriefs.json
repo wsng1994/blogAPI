@@ -1,0 +1,9 @@
+{
+  "flwList": [
+    {"node":"article.QueryTotals"},
+    {"node":"article.QueryBriefs"}
+  ],
+
+  "description": "A Vue.js project"
+
+}

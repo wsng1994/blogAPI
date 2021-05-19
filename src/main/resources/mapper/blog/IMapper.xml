@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wsng.blog.core.plugin.IRouterDao">
+
+    <select id="queryUsers" resultType="java.util.HashMap">
+        select * from blog_user
+    </select>
+
+    <select id="queryBriefs" resultType="java.util.HashMap" parameterType="Map">
+        select * from posts order by update_time desc
+        <if test="pageNum != null and pageSize != null">
+            limit #{pageNum}, #{pageSize}
+        </if>
+    </select>
+
+    <select id="getCounts" parameterType="Map" resultType="java.lang.Integer">
+        select count(*) from blog_user
+    </select>
+
+    <select id="getTotals"  resultType="java.lang.Integer">
+        select count(1) from posts
+    </select>
+
+    <select id="getArticleById"  resultType="java.util.HashMap">
+        select * from posts p where p.id = #{id}
+    </select>
+
+    <select id="queryArchives" resultType="java.util.HashMap" parameterType="Map">
+        select psc.create_time,ps.summary,ps.id from posts ps,post_categories psc
+
+        where ps.id = psc.post_id
+
+        order by psc.create_time
+
+    </select>
+
+    <select id="getTotalLogs"  resultType="java.lang.Integer">
+        select count(1) from journals
+    </select>
+
+    <select id="queryLogbooks" resultType="java.util.HashMap" parameterType="Map">
+        select * from journals order by create_time desc
+        <if test="pageNum != null and pageSize != null">
+            limit #{pageNum}, #{pageSize}
+        </if>
+    </select>
+
+    <select id="getCommentsCount" resultType="java.lang.Integer">
+        select count(1) from comments cs where cs.post_id = #{id}
+    </select>
+
+    <select id="getCommentsData" resultType="java.util.HashMap" parameterType="Map">
+        select * from comments cs where cs.post_id = #{id}  order by parent_id desc
+    </select>
+
+    <insert id="setComments" parameterType="com.wsng.blog.entity.Comments" >
+        insert into comments  (type,author,content,email,post_id,parent_id, update_time,create_time)
+        values (#{cmt.type},#{cmt.author},#{cmt.content},#{cmt.email},
+        #{cmt.post_id},#{cmt.parent_id},CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+    </insert>
+
+
+
+</mapper>

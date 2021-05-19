@@ -1,0 +1,8 @@
+{
+  "flwList": [
+    {"node":"music.GetMusicLrc"}
+  ],
+
+  "description": "A Vue.js project"
+
+}
